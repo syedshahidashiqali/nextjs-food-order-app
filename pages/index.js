@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Slider from '../components/Slider'
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
         <meta name="description" content="Best pizza shop in Karachi." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      hello
+      <Slider />
     </div>
   )
 }
