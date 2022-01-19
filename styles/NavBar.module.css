@@ -79,3 +79,43 @@
   top: -10px;
   right: -10px;
 }
+
+@media only screen and (max-width: 480px) {
+  .container {
+    padding: 10px 20px;
+  }
+  .item:first-child {
+    flex: 2;
+  }
+  .item:last-child {
+    flex: .5;
+  }
+  .item:nth-child(2) {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1111px) {
+  .container {
+    padding: 10px 20px;
+  }
+
+  .item:last-child{
+    flex: .5;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .item:last-child {
+    flex: 0.2;
+  }
+  .list img {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 889px) {
+  .item:nth-child(2){
+    display: none;
+  }
+}
