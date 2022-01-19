@@ -33,3 +33,50 @@
 .motto {
   color: rgb(211, 211, 211);
 }
+
+@media only screen and (max-width:480px) {
+
+  .container {
+    height: auto;
+    text-align: center;
+  }
+
+  .item:first-child {
+    display: none;
+  }
+  .item:last-child {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .text {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width:820px) {
+
+  .container {
+    height: auto;
+  }
+
+  .item:first-child {
+    display: none;
+  }
+}
+
+@media only screen and (max-width:532px) {
+
+  .item:last-child {
+    flex-direction: column;
+  } 
+}
+
+@media only screen and (max-width:350px) {
+  .item:last-child{
+    padding: 10px;
+  }
+}
