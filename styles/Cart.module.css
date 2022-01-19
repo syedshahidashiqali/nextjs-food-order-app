@@ -32,3 +32,26 @@
   font-weight: 500;
   font-size: 18px;
 }
+
+.wrapper {
+  max-height: 300px;
+  width: 90%;
+  background-color: #333;
+  color: white;
+  padding: 50px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.totalTextTitle {
+  margin-right: 10px;
+}
+
+.button {
+  color: #d1411e;
+  height: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+}
