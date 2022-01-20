@@ -94,3 +94,111 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
+@media only screen and (max-width:480px){
+  .container {
+    height: auto !important;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .imgContainer {
+    width: 70vw;
+    height: 70vw;
+  }
+  .title {
+    margin: 5px;
+  }
+
+  .sizes {
+    width: 100%;
+    padding: 0px 20px;
+  }
+
+  .ingredients {
+    flex-direction: column;
+  }
+
+  .option {
+    margin: 10px;
+    font-size: 18px;
+  }
+
+  .checkbox {
+    width: 25px;
+    height: 25px;
+  }
+
+  .quantity, .button {
+    height: 50px;
+    padding: 10px 20px;
+  }
+
+}
+
+@media only screen and (max-width:1000px){
+  .sizes {
+    width: 100%;
+    padding: 0px 20px;
+  }
+}
+
+@media only screen and (max-width:800px){
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ingredients {
+    justify-content: space-evenly;
+  }
+}
+
+@media only screen and (max-width:612px) and (min-width:480px){
+  .container {
+    margin-top: 20px;
+    height: auto;
+  }
+
+  .right {
+    position: relative;
+  }
+
+  .ingredients {
+    flex-direction: column;
+  }
+
+  .imgContainer {
+    height: 50vw;
+    width: 50vw;
+  }
+  
+  .title {
+    margin: 5px;
+  }
+  
+  .option {
+    width: 200px;
+  }
+
+  .option {
+    margin: 10px;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .checkbox {
+    width: 25px;
+    height: 25px;
+  }
+
+  .quantity, .button {
+    height: 60px;
+    padding: 10px 20px;
+  }
+
+  .quantity {
+    width: 78px;
+  }
+}
