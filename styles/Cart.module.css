@@ -55,3 +55,153 @@
   font-weight: bold;
   margin-top: 20px;
 }
+
+@media only screen and (max-width:480px){
+  .container {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .trTitle {
+    display: none;
+  }
+
+  .tr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .name, .total {
+    font-size: 24px;
+  }
+
+  .imgContainer {
+    width: 35vw;
+    height: 35vw;
+  }
+
+  .extras, .price, .quantity {
+    font-size: 22px;
+  }
+
+  .price::before {
+    content: "Price: ";
+    font-weight: 500;
+  }
+
+  .quantity::before {
+    content: "Quantity: ";
+    font-weight: 500;
+  }
+
+  .total::before {
+    content: "Total: ";
+    font-weight: 500;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:975px) and (min-width:714px){
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wrapper {
+    width:  80%;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width:714px) and (min-width:480px){
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wrapper {
+    width:  80%;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width:624px) and (min-width:480px){
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .trTitle {
+    display: none;
+  }
+
+  .tr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .name, .total {
+    font-size: 24px;
+  }
+
+  .imgContainer {
+    width: 35vw;
+    height: 35vw;
+  }
+
+  .extras, .price, .quantity {
+    font-size: 22px;
+  }
+
+  .price::before {
+    content: "Price: ";
+    font-weight: 500;
+  }
+
+  .quantity::before {
+    content: "Quantity: ";
+    font-weight: 500;
+  }
+
+  .total::before {
+    content: "Total: ";
+    font-weight: 500;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+}
