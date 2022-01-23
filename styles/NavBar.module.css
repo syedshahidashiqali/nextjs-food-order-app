@@ -56,12 +56,15 @@
 }
 
 .listItem {
+  cursor: pointer;
   margin: 20px;
   font-weight: 500;
 }
 
 .cart {
   position: relative;
+  cursor: pointer;
+
 }
 .counter {
   background-color: white;
