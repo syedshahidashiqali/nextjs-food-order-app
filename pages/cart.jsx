@@ -1,10 +1,95 @@
 import styles from "../styles/Cart.module.css"
 import Image from "next/image"
 import { useSelector, useDispatch } from "react-redux"
+import { useEffect, useState } from "react";
+import {
+    PayPalScriptProvider,
+    PayPalButtons,
+    usePayPalScriptReducer
+} from "@paypal/react-paypal-js";
+import axios from "axios"
+import { useRouter } from "next/router"
+import { reset } from "../redux/cartSlice"
 
 function Cart() {
   const dispatch = useDispatch()
   const cart = useSelector(state => state.cart)
+  const router = useRouter()
+
+  const createOrder = async (data) => {
+    try{
+      const res = await axios.post("http://localhost:3000/api/orders", data)
+      res.status === 201 && router.push(`/orders/${res.data._id}`)
+      dispatch(reset())
+    } catch(err){
+      console.log(err)
+    }
+  }
+  const [open, setOpen] = useState(false)
+  // This values are the props in the UI
+  const amount = cart.total;
+  const currency = "USD";
+  const style = { "layout": "vertical" };
+
+  // Custom component to wrap the PayPalButtons and handle currency changes
+  const ButtonWrapper = ({ currency, showSpinner }) => {
+    // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
+    // This is the main reason to wrap the PayPalButtons in a new component
+    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+
+    useEffect(() => {
+      dispatch({
+        type: "resetOptions",
+        value: {
+          ...options,
+          currency: currency,
+        },
+      });
+    }, [currency, showSpinner]);
+
+
+    return (
+      <>
+        {(showSpinner && isPending) && <div className="spinner" />}
+        <PayPalButtons
+          style={style}
+          disabled={false}
+          forceReRender={[amount, currency, style]}
+          fundingSource={undefined}
+          createOrder={(data, actions) => {
+            return actions.order
+              .create({
+                purchase_units: [
+                  {
+                    amount: {
+                      currency_code: currency,
+                      value: amount,
+                    },
+                  },
+                ],
+              })
+              .then((orderId) => {
+                // Your code here after create the order
+                return orderId;
+              });
+          }}
+          onApprove={function (data, actions) {
+            return actions.order.capture().then(function (details) {
+              // Your code here after capture the order
+              const shipping = details.purchase_units[0].shipping
+              createOrder({
+                customer: shipping.name.full_name,
+                address: shipping.address.address_line_1,
+                total: cart.total,
+                method: 1,
+              })
+            });
+          }}
+        />
+      </>
+    );
+}
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -63,7 +148,26 @@ function Cart() {
           <div className={styles.totalText}>
             <b className={styles.totalTextTitle}>Total:</b>${cart.total}
           </div>
-          <button className={styles.button}>CHECKOUT NOW!</button>
+          {open ? (
+            <div className={styles.paymentMethod}>
+              <button className={styles.payButton}>CASH ON DELIVERY</button>
+              <PayPalScriptProvider
+                options={{
+                  "client-id": "AdOZkTOI6ESi3JmGuU2yZtNZmaTwrchBtxt0kIhIiqG2MFErItYOaIgMuIt01ufomx_yhaKo8NQF-J5i",
+                  components: "buttons",
+                  currency: "USD",
+                  "disable-funding": "credit,card,venmo,p24",
+                }}
+              >
+                <ButtonWrapper
+                  currency={currency}
+                  showSpinner={false}
+                />
+              </PayPalScriptProvider>
+            </div>
+          ) : (
+            <button className={styles.button} onClick={() => setOpen(true)}>CHECKOUT NOW!</button>
+          )}
         </div>
       </div>
     </div>
