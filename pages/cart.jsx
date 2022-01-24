@@ -47,7 +47,7 @@ function Cart() {
           currency: currency,
         },
       });
-    }, [currency, showSpinner]);
+    }, [currency, showSpinner, dispatch, options]);
 
 
     return (
@@ -112,6 +112,7 @@ function Cart() {
                     src={product.img} 
                     layout="fill"
                     objectFit="cover"
+                    alt=""
                   />
                 </div>
               </td>
