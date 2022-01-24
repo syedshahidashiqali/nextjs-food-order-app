@@ -2,11 +2,11 @@ import cookie from "cookie"
 
 export default function handler(req, res) {
 
-  if(method === "POST"){
+  if(req.method === "POST"){
 
     const { username, password } = req.body
-    if(username === process.env.USERNAME && password === process.env.PASSWORD) {
-      res.setHeaders(
+    if(username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
+      res.setHeader(
         "Set-Cookie",
         cookie.serialize("token", process.env.TOKEN, {
           maxAge: 60 * 60, // number in seconds, it is one hour
@@ -16,9 +16,9 @@ export default function handler(req, res) {
           // secure: true,
         })
       )
-    }
-    res.status(200).json("Successful!")
-  } else {
-    res.status(400).json("Wrong credentials!")
+      res.status(200).json("Successful!")
+    } else{
+      res.status(400).json("Wrong credentials!")
+      }
   }
 }
