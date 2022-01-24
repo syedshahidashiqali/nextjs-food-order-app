@@ -49,7 +49,7 @@ const Admin = ({ products, orders }) => {
           </thead>
           <tbody>
             {pizzaList.map((pizza) => (
-              <tr className={styles.trTitle} key={product._id}>
+              <tr className={styles.trTitle} key={pizza._id}>
                 <td>
                   <Image
                     src={pizza.img}
@@ -65,7 +65,7 @@ const Admin = ({ products, orders }) => {
                   <button className={styles.button}>Edit</button>
                   <button
                     className={styles.button}
-                    onClick={() => handleDelete(product._id)}
+                    onClick={() => handleDelete(pizza._id)}
                   >
                     Delete
                   </button>
