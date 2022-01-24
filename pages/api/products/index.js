@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
   dbConnect()
 
-  const { method } = req
+  const { method, cookies } = req
 
   if(method === "GET"){
     try {
@@ -17,6 +17,10 @@ export default async function handler(req, res) {
   }
 
   if(method === "POST"){
+    const token = cookies.token
+    if(!token || token !== process.env.TOKEN){
+      return res.status(401).json("Not Authenticated!")
+    }
     try{
       const product = await Product.create(req.body);
       res.status(201).json(product)

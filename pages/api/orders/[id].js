@@ -23,6 +23,10 @@ export default async function handler(req, res) {
   // PUT Method for updating an order
   if(method === "PUT"){
     try{
+      const order = await Order.findByIdAndUpdate(id, req.body, {
+        new: true
+      })
+      res.status(201).json(order)
     }catch(err){
       res.status(500).json(err)
     }
