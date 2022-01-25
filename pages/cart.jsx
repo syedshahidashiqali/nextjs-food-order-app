@@ -112,6 +112,7 @@ function Cart() {
                     src={product.img} 
                     layout="fill"
                     objectFit="cover"
+                    alt=""
                   />
                 </div>
               </td>

@@ -56,6 +56,7 @@ const Admin = ({ products, orders }) => {
                     width="50"
                     height="50"
                     objectFit="cover"
+                    alt=""
                   />
                 </td>
                 <td>{pizza._id.slice(0, 5)}...</td>

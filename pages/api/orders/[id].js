@@ -3,7 +3,7 @@ import Order from "../../../models/Order"
 
 export default async function handler(req, res) {
 
-  dbConnect()
+  await dbConnect()
 
   const { 
     method,
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       const order = await Order.findById(id)
       res.status(200).json(order)
     }catch(err){
-      res.status(500).json(err)
+      res.status(500).json({message:"get an order (GET)", error: err})
     }
   }
 
@@ -28,15 +28,15 @@ export default async function handler(req, res) {
       })
       res.status(201).json(order)
     }catch(err){
-      res.status(500).json(err)
+      res.status(500).json({message:"update an order(PUT)", error: err})
     }
   }
 
   // DELETE Method for deleting an order
-  if(method === "DELETE"){
-    try{
-    }catch(err){
-      res.status(500).json(err)
-    }
-  }
+  // if(method === "DELETE"){
+  //   try{
+  //   }catch(err){
+  //     res.status(500).json(err)
+  //   }
+  // }
 }

@@ -3,7 +3,7 @@ import Product from "../../../models/Product"
 
 export default async function handler(req, res) {
 
-  dbConnect()
+  await dbConnect()
 
   const { 
     method,
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       const product = await Product.findById(id)
       res.status(200).json(product)
     }catch(err){
-      res.status(500).json(err)
+      res.status(500).json({message:"get a product (GET)", error: err})
     }
   }
 
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       })
       res.status(201).json(product)
     }catch(err){
-      res.status(500).json(err)
+      res.status(500).json({message:"update a product (PUT)", error: err})
     }
   }
 
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
       await Product.findByIdAndDelete(id)
       res.status(200).json("The product has been deleted successfully!")
     }catch(err){
-      res.status(500).json(err)
+      res.status(500).json({message:"delete a product (DELETE)", error: err})
     }
   }
 }
