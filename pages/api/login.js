@@ -12,8 +12,8 @@ export default function handler(req, res) {
           maxAge: 60 * 60, // number in seconds, it is one hour
           sameSite: "strict",
           path: "/",
-          // httpOnly: true,
-          // secure: true,
+          httpOnly: true,
+          secure: true,
         })
       )
       res.status(200).json("Successful!")
