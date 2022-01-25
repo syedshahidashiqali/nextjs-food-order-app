@@ -1,7 +1,15 @@
 import dbConnect from "../../../util/dbConnect"
 import Order from "../../../models/Order"
+import NextCors from 'nextjs-cors';
 
 export default async function handler(req, res) {
+
+  await NextCors(req, res, {
+    // Options
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccessStatus: 200,
+  });
 
   await dbConnect()
 

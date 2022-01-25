@@ -41,7 +41,7 @@ const Add = ({ setClose }) => {
         extraOptions,
       }
 
-      await axios.post("https://nextjs-food-order-app.vercel.app/api/products", newProduct, {withCredentials: false})
+      await axios.post("https://nextjs-food-order-app.vercel.app/api/products", newProduct)
       setClose(true)
     }catch(err){
       console.log(err)
