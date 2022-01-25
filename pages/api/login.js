@@ -1,9 +1,9 @@
 import cookie from "cookie"
 import NextCors from 'nextjs-cors';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
 
-  NextCors(req, res, {
+  await NextCors(req, res, {
     // Options
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     origin: '*',
