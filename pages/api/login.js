@@ -18,7 +18,7 @@ export default function handler(req, res) {
       )
       res.status(200).json("Successful!")
     } else{
-      res.status(400).json("Wrong credentials!")
+      res.status(400).json({message:"Wrong credentials! login", error: err})
       }
   }
 }

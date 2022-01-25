@@ -47,7 +47,7 @@ function Cart() {
           currency: currency,
         },
       });
-    }, [currency, showSpinner, dispatch, options]);
+    }, [currency, showSpinner]);
 
 
     return (
