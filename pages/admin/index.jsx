@@ -2,11 +2,12 @@ import styles from "../../styles/Admin.module.css"
 import Image from "next/image"
 import axios from "axios"
 import { useState } from "react"
+import Cookies from "js-cookie"
 
 const Admin = ({ products, orders, token }) => {
+  Cookies.set("token", token)
   const [pizzaList, setPizzaList] = useState(products)
   const [orderList, setOrderList] = useState(orders)
-  console.log(token)
 
   const status = ["preparing", "on the way", "delivered"]
 
@@ -120,8 +121,6 @@ const Admin = ({ products, orders, token }) => {
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || ""
-
-  console.log(123, myCookie)
 
   if(myCookie.token !== process.env.TOKEN) {
     return {
