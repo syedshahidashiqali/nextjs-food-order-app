@@ -6,9 +6,12 @@ function PizzaList({ pizzaList }) {
     <div className={styles.container}>
       <h1 className={styles.title}>THE BEST PIZZA IN TOWN</h1>
       <p className={styles.desc}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Ut blandit arcu in pretium molestie. Interdum et malesuada fames acme. 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        We call it California-style pizza. What exactly is that? Answer: damn good. 
+        No rules, no “must have this” or “can’t have that” and no silly debates over what’s 
+        the right way to eat it. We just love pizza and all its varieties. And we love California, 
+        where we can work with San Francisco-style sour dough, lots of fresh, locally-sourced ingredients 
+        and set up shop in a neighborhood where we can welcome one generation after another with good 
+        food and good times.
       </p>
       <div className={styles.wrapper}>
         {pizzaList.map(pizza => (
