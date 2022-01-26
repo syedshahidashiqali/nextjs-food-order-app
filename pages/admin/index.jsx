@@ -3,9 +3,10 @@ import Image from "next/image"
 import axios from "axios"
 import { useState } from "react"
 
-const Admin = ({ products, orders }) => {
+const Admin = ({ products, orders, token }) => {
   const [pizzaList, setPizzaList] = useState(products)
   const [orderList, setOrderList] = useState(orders)
+  console.log(token)
 
   const status = ["preparing", "on the way", "delivered"]
 
@@ -136,6 +137,7 @@ export const getServerSideProps = async (ctx) => {
     props: {
       products: productRes.data,
       orders: orderRes.data,
+      token: myCookie.token || "",
     }
   }
 }
