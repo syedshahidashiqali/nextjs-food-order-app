@@ -18,10 +18,11 @@ export default function handler(req, res) {
         "Set-Cookie",
         cookie.serialize("token", process.env.TOKEN, {
           maxAge: 60 * 60, // number in seconds, it is one hour
-          sameSite: "strict",
+          // sameSite: "strict",
+          sameSite: "none",
           path: "/",
           // httpOnly: true,
-          // secure: true,
+          secure: true,
         })
       )
       res.status(200).json("Successful!")
