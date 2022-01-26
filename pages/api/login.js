@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   await NextCors(req, res, {
     // Options
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: 'https://nextjs-food-order-app-p52bdr6uv-syedshahidashiqali.vercel.app/',
+    origin: '*',
     optionsSuccessStatus: 200,
   });
 
@@ -18,8 +18,8 @@ export default async function handler(req, res) {
         "Set-Cookie",
         cookie.serialize("token", process.env.TOKEN, {
           maxAge: 60 * 60, // number in seconds, it is one hour
-          sameSite: "strict",
-          // sameSite: "none",
+          // sameSite: "strict",
+          sameSite: "none",
           path: "/",
           httpOnly: true,
           secure: true,

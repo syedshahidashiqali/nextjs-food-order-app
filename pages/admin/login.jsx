@@ -11,7 +11,8 @@ const Login = () => {
 
   const handleClick = async () => {
     try{
-      await axios.post("https://nextjs-food-order-app.vercel.app/api/login", {username, password})
+      const res = await axios.post("https://nextjs-food-order-app.vercel.app/api/login", {username, password}, {withCredentials: true})
+      console.log(15,res);
       router.push("/admin")
     }catch(err){
       setError(true)
