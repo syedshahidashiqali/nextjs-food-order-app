@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   await NextCors(req, res, {
     // Options
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    // origin: '',
-    // optionsSuccessStatus: 200,
+    origin: 'https://nextjs-food-order-app.vercel.app/',
+    optionsSuccessStatus: 200,
   });
 
   if(req.method === "POST"){
