@@ -121,6 +121,8 @@ const Admin = ({ products, orders, token }) => {
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || ""
 
+  console.log(123, myCookie)
+
   if(myCookie.token !== process.env.TOKEN) {
     return {
       redirect: {
